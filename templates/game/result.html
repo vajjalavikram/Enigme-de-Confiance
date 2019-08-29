@@ -1,0 +1,10 @@
+{%extends 'game/base.html'%}
+
+{% block content%}
+	<h1>Results</h1>
+	<h2>Your preferences were in the order {%for p in prefs%} {{p}}, {%endfor%} </h2>
+	<h2>The correct ans is {%for c in case%} {{c}}, {%endfor%}</h2>
+	<h2>So your score this round is {{marks}}</h2>
+	<h2>Final Score is {{Score}}</h2>
+	<a href="/play/">Click here for round 2</a>
+{% endblock content%}

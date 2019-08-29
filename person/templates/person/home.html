@@ -1,0 +1,18 @@
+{% extends 'person/base.html' %}
+{%block style%}{%endblock style%}
+{%block content%}
+{% for item in UserProfile%}
+<div class = "container">
+
+<div class="jumbotron">
+  <h1 class="display-4" style="text-align: center;">Evolution Of Trust</h1>
+  <h2>1. {{item.Name_1}}</h2>
+  <h2>1. {{item.Name_2}}</h2>
+
+  <p class="lead">Your initial score is 0</p>
+  <hr class="my-4">
+  <a class="btn btn-primary btn-lg" href="/play" role="button">Start Game</a>
+</div>
+</div>
+{% endfor %}
+{%endblock content%}

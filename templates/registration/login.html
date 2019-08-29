@@ -1,0 +1,11 @@
+{% if not request.user.is_authenticated %}
+<h2>LOGIN</h2>
+<form method="post">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<button type="submit">Login</button>
+</form>
+{%else%}
+<p>You are already logged in..</p>
+ <a href="/">Home</a>
+{%endif%}

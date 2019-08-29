@@ -1,0 +1,16 @@
+{% if not request.user.is_authenticated %}
+
+<form method="post">
+	<div class="form" id="form">
+	<div class="field email">
+	<div class="icon"></div>
+	<input class="input" type="hidden" name="csrfmiddlewaretoken" value="LRdvVWaltsMIVY9HwShAVw9TMdwImvaCWxi4FNToOvwWROoOYDVEBol1cOqRdhrE">
+	<p><input type="text" name="username" autofocus required id="id_username"></p>
+	<p><input type="password" name="password" required id="id_password"></p>
+	<button type="submit">Login</button>
+</form>
+
+{%else%}
+<p>You are already logged in..</p>
+ <a href="/">Home</a>
+{%endif%}

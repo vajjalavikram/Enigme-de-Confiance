@@ -1,0 +1,12 @@
+{%extends 'game/base.html'%}
+
+{%block content%}
+	<form action="/result/" method="post">
+		{%csrf_token%}
+		Copycat <input type="number" name="Pref_1" min="1" max="10">
+		Always Cheat <input type="number" name="Pref_2" min="1" max="10">
+		Cooperate <input type="number" name="Pref_3" min="1" max="10">
+		Detective <input type="number" name="Pref_4" min="1" max="10">
+		<input type="Submit" name="Submit">
+	</form>
+{%endblock content%}
