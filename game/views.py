@@ -7,7 +7,8 @@ def play(request):
 	
 	case.num += 1
 	case.save()
-	return render(request,'game/index.html')
+	context = {'Copy':case.Copy_1,'Cheat':case.Cheat_2,'Coop':case.Coop_3,'Detect':case.Detective_4,'Grudge':case.Grudger_7,'CopyKit':case.CopyKit_5,'Simple':case.Simp_6,'Random':case.Random_7}
+	return render(request,'game/index.html',context)
 
 def result(request):
 	marks = 0 
