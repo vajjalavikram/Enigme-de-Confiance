@@ -99,19 +99,34 @@ Many thanks again!
         <h4 class="modal-title">Select your choice</h4>
       </div>
       <div class="modal-body">
-        <form>
-              <select id="op1">
-              <option value="volvo">Volvo</option>
-              <option value="saab">Saab</option>
-              <option value="mercedes">Mercedes</option>
-              <option value="audi">Audi</option>
-            </select>
-            <select id="op2">
-              <option value="volvo">Volvo</option>
-              <option value="saab">Saab</option>
-              <option value="mercedes">Mercedes</option>
-              <option value="audi">Audi</option>
-            </select>
+        <form action = "#" method= "post">
+        	
+        	{% if Copy %}
+   				Copycat <input type="number" name="Pref_1" min="1" max="4" value="0" id="1">
+   			{% endif %}
+        	{% if Cheat %}
+   				Cheat <input type="number" name="Pref_2" min="1" max="4" value="0" id="2">
+   			{% endif %}
+        	{% if Coop %}
+   				Coop <input type="number" name="Pref_3" min="1" max="4"value="0" id="3">
+   			{% endif %}
+        	{% if Detect %}
+   				Detect <input type="number" name="Pref_4" min="1" max="4"value="0"id="4">
+   			{% endif %}
+        	{% if Grudge %}
+   				Grudge <input type="number" name="Pref_5" min="1" max="4"value="0" id="5">
+   			{% endif %}
+        	{% if CopyKit %}
+   				CopyKit <input type="number" name="Pref_6" min="1" max="4"value="0" id="6" >
+   			{% endif %}
+        	{% if Simple %}
+   				Simple <input type="number" name="Pref_7" min="1" max="4"value="0" id="7">
+   			{% endif %}
+        	{% if Random %}
+   				Random <input type="number" name="Pref_8" min="1" max="4"value="0" id="8">
+   			{% endif %}
+   			<input type="Submit" name="Submit" id='submit'>
+
         </form>
       </div>
       <div class="modal-footer">
@@ -204,10 +219,18 @@ Many thanks again!
 
 </script>
 
-<script>
-    $("#formsub").click(function(){
+<script type="text/javascript">
+	$("#submit").click(function() {
+		$.ajax({
+			type: POST
+			url: "result/",
+			data:{'Pref_1':$("#1").val() ,'Pref_2':$("#2").val(),'Pref_3':$("#3").val(),'Pref_4':$("#4").val(),'Pref_5':$("#5").val(),'Pref_6':$("#6").val(),'Pref_7':$("#7").val(),'Pref_8':$("#8").val() ,csrfmiddlewaretoken:'{{ csrf_token }}'},
+			success: function(resultData){
+				
 
-    });
+			}
+		});
+	})
 </script>
 <!-- Main Code -->
 <script src="{% static 'main.js' %}"></script>

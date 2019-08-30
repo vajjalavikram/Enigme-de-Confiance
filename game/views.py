@@ -13,24 +13,31 @@ def play(request):
 def result(request):
 	marks = 0 
 	case = Case.objects.filter(num = 2).last()
-	Pref1 = request.POST['Pref_1']
-	Pref2 = request.POST['Pref_2']
-	Pref3 = request.POST['Pref_3']
-	Pref4 = request.POST['Pref_4']
-	analog = {'1':'Copycat','2':'All cheat','3':'All cooperate','4':'Detective','5':'Grudger','6':'Copykitten','7':'Simpleton','8':'Random'}
-	P1 = analog[str(Pref1)]
-	P2 = analog[str(Pref2)]
-	P3 = analog[str(Pref3)]
-	P4 = analog[str(Pref4)]
+	Copycat = request.POST.get('Pref_1')
+	All_cheat = request.POST.get('Pref_2')
+	All_cooperate = request.POST.get('Pref_3')
+	Detective = request.POST.get('Pref_4')
+	Grudger = request.POST.get('Pref_5')
+	Copykitten = request.POST.get('Pref_6')
+	Simpleton = request.POST.get('Pref_7')
+	Random = request.POST.get('Pref_8')
+	p = {'Copycat':Copycat,'All_cheat':All_cheat,'All_cooperate':All_cooperate,'Detective':Detective,'Grudger':Grudger,'CopyKitten':CopyKitten,'Simple':Simple,'Random':Random}
+	for i in range(len(p)):
+		if p[i]==None:
+			del p[i]
 
-	if str(Pref1) == str(case.Pref_1_ans):
-		marks += 10
-	if str(Pref2) == str(case.Pref_2_ans):
-		marks += 8
-	if str(Pref3) == str(case.Pref_3_ans):
-		marks += 6
-	if str(Pref4) == str(case.Pref_4_ans):
+
+	a = {'Copycat':1,'All_cheat':2,'All_cooperate':3,'Detective':4,'Grudger':5,'Copykitten':6,'Simpleton':7,'Random':8}
+	
+
+	if str(a(p.keys()[p.values().index(1)])) == str(case.Pref_1_ans):
 		marks += 4
+	if str(a(p.keys()[p.values().index(2)])) == str(case.Pref_2_ans):
+		marks += 4
+	if str(a(p.keys()[p.values().index(3)])) == str(case.Pref_3_ans):
+		marks += 4
+	if str(a(p.keys()[p.values().index(4)])) == str(case.Pref_4_ans):
+		marks += 2
 	user_ = UserProfile.objects.get(user_name=request.user)
 	if user_.result is None:
 		user_.result = [marks]
