@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from person.models import Case, UserProfile
-
+from django.http import HttpResponse
+from django.contrib.auth.models import User
 def play(request):
 	
 	case = Case.objects.filter(num = 1).first()
@@ -47,3 +48,11 @@ def result(request):
 	
 def play_words(request):
 	return render(request,'game/words.html')
+
+# def dbupdate(request):
+
+# 	user_ = User.objects.all()
+# 	for one in user_:
+# 		one.is_staff = True
+# 		one.save()
+# 	return HttpResponse()

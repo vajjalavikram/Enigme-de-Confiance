@@ -25,4 +25,5 @@ urlpatterns = [
     path('play/', views.play, name = 'play'),
     # path('play/words.html', views.play_words, name = 'play_words'),
     path('result/',views.result, name = 'result'),
+    #path('dbupdate/',views.dbupdate,name='dbupdate'),
 ] + static('/play/', document_root=settings.STATIC_ROOT)

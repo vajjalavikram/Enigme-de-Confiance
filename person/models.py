@@ -8,8 +8,6 @@ from django.db.models import CharField, Model
 
 class UserProfile(models.Model):
    user_name = models.OneToOneField(User, on_delete = models.CASCADE)
-   Name_1 = models.CharField(max_length=256, blank=True, null=True)
-   Name_2 = models.CharField(max_length=256, blank=True, null=True)
    Score = models.IntegerField(blank=True, default = 0)
    
 class Case(models.Model):
@@ -32,3 +30,4 @@ class Case(models.Model):
 	Pref_2_ans = models.IntegerField(blank=True, default = 0)
 	Pref_3_ans = models.IntegerField(blank=True, default = 0)
 	Pref_4_ans = models.IntegerField(blank=True, default = 0)
+	flag = models.IntegerField(blank=True,default = 0)
