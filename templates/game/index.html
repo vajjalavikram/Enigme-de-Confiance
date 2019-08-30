@@ -87,7 +87,7 @@ Many thanks again!
 		</div>
 
 	</div>
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="z-index: 1000; position: fixed; top:0;" >Open Modal</button>
+<button type="button"  class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="z-index: 1000; position: fixed; top:215px;left:172px;" >Open Modal</button>
 
     <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -96,13 +96,28 @@ Many thanks again!
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
+        <h4 class="modal-title">Select your choice</h4>
       </div>
       <div class="modal-body">
-        <p>Some text in the modal.</p>
+        <form>
+            {% csrf_token %}
+
+            <select id="op1">
+              <option value="volvo">Volvo</option>
+              <option value="saab">Saab</option>
+              <option value="mercedes">Mercedes</option>
+              <option value="audi">Audi</option>
+            </select>
+            <select id="op2">
+              <option value="volvo">Volvo</option>
+              <option value="saab">Saab</option>
+              <option value="mercedes">Mercedes</option>
+              <option value="audi">Audi</option>
+            </select>
+        </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" id="formsub">Submit</button>
       </div>
     </div>
 
@@ -189,6 +204,12 @@ Many thanks again!
 	T: 3 // temptation: you put no coin, got 3 coins anyway
 };
 
+</script>
+
+<script>
+    $("#formsub").click(function(){
+
+    });
 </script>
 <!-- Main Code -->
 <script src="{% static 'main.js' %}"></script>

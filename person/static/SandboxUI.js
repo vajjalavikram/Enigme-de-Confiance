@@ -15,14 +15,13 @@ function SandboxUI(config){
 	var playButton = new Button({
 		x:172, y:215, text_id:"label_start", size:"short",
 		onclick: function(){
-			var flag=0;
-			if(flag===1) {
+
 				if (slideshow.objects.tournament.isAutoPlaying) {
 					publish("tournament/autoplay/stop");
 				} else {
 					publish("tournament/autoplay/start");
 				}
-			}
+
 		}
 	});
 	listen(self, "tournament/autoplay/stop",function(){

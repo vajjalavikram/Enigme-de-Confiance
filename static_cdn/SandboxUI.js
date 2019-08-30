@@ -15,6 +15,8 @@ function SandboxUI(config){
 	var playButton = new Button({
 		x:172, y:215, text_id:"label_start", size:"short",
 		onclick: function(){
+			var mod = document.getElementById("myModal");
+
 			if(slideshow.objects.tournament.isAutoPlaying){
 				publish("tournament/autoplay/stop");
 			}else{
