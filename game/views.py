@@ -53,6 +53,10 @@ def result(request):
 def play_words(request):
 	return render(request,'game/words.html')
 
+
+def modal(request):
+	return render(request,'game/modal.html')
+
 # def dbupdate(request):
 
 # 	user_ = User.objects.all()
@@ -60,3 +64,4 @@ def play_words(request):
 # 		one.is_staff = True
 # 		one.save()
 # 	return HttpResponse()
+

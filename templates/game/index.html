@@ -58,7 +58,7 @@ Many thanks again!
 	<!-- Styles -->
 	<link rel="stylesheet" href="{% static 'person/slides.css' %}">
 	<link rel="stylesheet" href="{% static 'person/balloon.css' %}">
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 </head>
 <body>
 	<div id="preloader">loading...</div> <!-- TRANSLATE THIS -->
@@ -87,7 +87,44 @@ Many thanks again!
 		</div>
 
 	</div>
+<button type="button"  class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="z-index: 1000; position: fixed; top:215px;left:172px;" >Open Modal</button>
+
+    <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+     Modal content
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Select your choice</h4>
+      </div>
+      <div class="modal-body">
+        <form>
+              <select id="op1">
+              <option value="volvo">Volvo</option>
+              <option value="saab">Saab</option>
+              <option value="mercedes">Mercedes</option>
+              <option value="audi">Audi</option>
+            </select>
+            <select id="op2">
+              <option value="volvo">Volvo</option>
+              <option value="saab">Saab</option>
+              <option value="mercedes">Mercedes</option>
+              <option value="audi">Audi</option>
+            </select>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" id="formsub">Submit</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
 </html>
 
 <!-- Libraries -->
@@ -123,15 +160,20 @@ Many thanks again!
 <script type="text/javascript"  src="{% static 'Iterated.js' %}"></script>
 
 <script>
-	var tft_count = {{ Copy }};
-	var all_d= {{ Cheat }};
+	//var tft_count = {{ Copy }};
+	//var all_d= {{ Cheat }};
+
+
+    let all_d=10;
+    let tft_count=30;
+
 	glob = [
 		{strategy:"tft", count:tft_count},
 		{strategy:"all_d", count:all_d},
 		{strategy:"all_c", count:0},
 		{strategy:"grudge", count:0},
 		{strategy:"prober", count:0},
-		{strategy:"tf2t", count:5},
+		{strategy:"tf2t", count:0},
 		{strategy:"pavlov", count:0},
 		{strategy:"random", count:0}
 	];
@@ -150,6 +192,8 @@ Many thanks again!
 <script type="text/javascript" src="{% static  '7_Slides_Sandbox.js'%} "></script>
 <script type="text/javascript" src="{% static  '8_Slides_Conclusion.js'%} "></script>
 <!--<script type="text/javascript" src="{% static 'js/slides/9_Slides_Credits.js'%} "></script>-->
+
+
 <script>
 	PD.PAYOFFS_DEFAULT = {
 	P: 0, // punishment: neither of you get anything
@@ -158,6 +202,12 @@ Many thanks again!
 	T: 3 // temptation: you put no coin, got 3 coins anyway
 };
 
+</script>
+
+<script>
+    $("#formsub").click(function(){
+
+    });
 </script>
 <!-- Main Code -->
 <script src="{% static 'main.js' %}"></script>

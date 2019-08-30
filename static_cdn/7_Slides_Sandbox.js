@@ -22,6 +22,12 @@ SLIDES.push({
 			text_id:"sandbox_end_btn",
 			message: "slideshow/scratch"
 		});
+
+		self.add({
+			id:"bt01", type:"Button",
+			x:172, y:215, size:"long",
+			textContent:"Fuck_off"
+		});
 		
 	},
 	onend: function(self){
