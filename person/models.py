@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models import CharField, Model
-
+from picklefield.fields import PickledObjectField
 
 # Create your models here.
 
@@ -9,7 +9,7 @@ from django.db.models import CharField, Model
 class UserProfile(models.Model):
    user_name = models.OneToOneField(User, on_delete = models.CASCADE)
    Score = models.IntegerField(blank=True, default = 0)
-   
+   result=PickledObjectField(null=True)
 class Case(models.Model):
 	num = models.IntegerField(blank = True, default = 1)
 	Copy_1 = models.IntegerField(blank=True, default = 0)
@@ -31,3 +31,4 @@ class Case(models.Model):
 	Pref_3_ans = models.IntegerField(blank=True, default = 0)
 	Pref_4_ans = models.IntegerField(blank=True, default = 0)
 	flag = models.IntegerField(blank=True,default = 0)
+	num_eliminate = models.IntegerField(blank=True, default = 0)

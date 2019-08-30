@@ -5,7 +5,6 @@ from django.contrib.auth.models import User
 def play(request):
 	
 	case = Case.objects.filter(num = 1).first()
-	
 	case.num += 1
 	case.save()
 	context = {'Copy':case.Copy_1,'Cheat':case.Cheat_2,'Coop':case.Coop_3,'Detect':case.Detective_4,'Grudge':case.Grudger_7,'CopyKit':case.CopyKit_5,'Simple':case.Simp_6,'Random':case.Random_7}
@@ -33,6 +32,11 @@ def result(request):
 	if str(Pref4) == str(case.Pref_4_ans):
 		marks += 4
 	user_ = UserProfile.objects.get(user_name=request.user)
+	if user_.result is None:
+		user_.result = [marks]
+	else:
+		user_.result += [marks]
+	print(user_.result)
 	user_.Score += marks
 	user_.save()
 	score = user_.Score
