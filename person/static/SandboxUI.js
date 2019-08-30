@@ -12,25 +12,51 @@ function SandboxUI(config){
 	// BUTTONS for playing //////////////////
 	/////////////////////////////////////////
 
-	var playButton = new Button({
-		x:172, y:215, text_id:"label_start", size:"short",
-		onclick: function(){
+	
+		var playButton1 = new Button({
 
-				if (slideshow.objects.tournament.isAutoPlaying) {
+				x:172, y:215, text_id:"label_start", size:"short", targetc:"#myModal",toggle:"modal", ida:"modal1",
+				
+		});
+		dom.appendChild(playButton1.dom);
+	
+	/////////////////////////////////////////
+	// BUTTONS for playing //////////////////
+	/////////////////////////////////////////
+
+	
+	
+	var playButton = new Button({
+
+
+			x:172, y:215, text_id:"label_start", size:"short",ida:"play",
+			onclick: function(){
+
+				if(slideshow.objects.tournament.isAutoPlaying){
 					publish("tournament/autoplay/stop");
-				} else {
+				}else{
 					publish("tournament/autoplay/start");
 				}
+			}
 
-		}
+	
+			
 	});
-	listen(self, "tournament/autoplay/stop",function(){
-		playButton.setText("label_start");
-	});
-	listen(self, "tournament/autoplay/start",function(){
-		playButton.setText("label_stop");
-	});
+
+	
+
+		listen(self, "tournament/autoplay/stop",function(){
+			playButton.setText("label_start");
+		});
+		listen(self, "tournament/autoplay/start",function(){
+			playButton.setText("label_stop");
+		});
+
+	
+		
 	dom.appendChild(playButton.dom);
+	
+	
 
 	/*var stepButton = new Button({
 		x:172, y:135+70, text_id:"label_step", message:"tournament/step", size:"short"

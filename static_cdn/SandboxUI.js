@@ -8,28 +8,52 @@ function SandboxUI(config){
 	self.dom.className = "object";
 	var dom = self.dom;
 
+	var flag =1;
+
+	console.log(flag);
+	var playButton = new Button({
+
+
+			x:172, y:215, text_id:"label_start", size:"short", data-target:"#myModal", data-toggle:"modal"
+			onclick: function(){
+			}
+			
+	});
+
 	/////////////////////////////////////////
 	// BUTTONS for playing //////////////////
 	/////////////////////////////////////////
 
-	var playButton = new Button({
-		x:172, y:215, text_id:"label_start", size:"short",
-		onclick: function(){
-			var mod = document.getElementById("myModal");
+	// if(flag == 0){
 
-			if(slideshow.objects.tournament.isAutoPlaying){
-				publish("tournament/autoplay/stop");
-			}else{
-				publish("tournament/autoplay/start");
-			}
-		}
-	});
-	listen(self, "tournament/autoplay/stop",function(){
-		playButton.setText("label_start");
-	});
-	listen(self, "tournament/autoplay/start",function(){
-		playButton.setText("label_stop");
-	});
+	// var playButton = new Button({
+
+
+	// 		x:172, y:215, text_id:"label_start", size:"short",
+	// 		onclick: function(){
+
+	// 			if(slideshow.objects.tournament.isAutoPlaying){
+	// 				publish("tournament/autoplay/stop");
+	// 			}else{
+	// 				publish("tournament/autoplay/start");
+	// 			}
+	// 		}
+
+	
+			
+	// });
+
+	
+
+	// 	listen(self, "tournament/autoplay/stop",function(){
+	// 		playButton.setText("label_start");
+	// 	});
+	// 	listen(self, "tournament/autoplay/start",function(){
+	// 		playButton.setText("label_stop");
+	// 	});
+
+	// }
+		
 	dom.appendChild(playButton.dom);
 
 	/*var stepButton = new Button({

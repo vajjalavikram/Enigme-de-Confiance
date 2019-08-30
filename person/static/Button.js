@@ -44,6 +44,9 @@ function Button(config){
 	// Customize DOM
 	button.style.left = config.x+"px";
 	button.style.top = config.y+"px";
+	button.setAttribute("data-target",config.targetc)
+	button.setAttribute("data-toggle",config.toggle)
+	button.setAttribute("id",config.ida)
 	self.setText = function(text_id){
 		var words = Words.get(text_id);
 		if(config.uppercase) words = words.toUpperCase();
