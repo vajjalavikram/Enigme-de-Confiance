@@ -25,4 +25,5 @@ urlpatterns = [
     path('play/', views.play, name = 'play'),
     # path('play/words.html', views.play_words, name = 'play_words'),
     path('result/',views.result, name = 'result'),
+    path('modal/',views.modal,name='modal'),
 ] + static('/play/', document_root=settings.STATIC_ROOT)

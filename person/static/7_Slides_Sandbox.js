@@ -16,6 +16,7 @@ SLIDES.push({
 			x:55, y:481, width:535, align:"right",
 			text_id: "sandbox_end"
 		});
+
 		self.add({
 			id:"button_next", type:"Button",
 			x:605, y:485, size:"long",

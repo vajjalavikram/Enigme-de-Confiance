@@ -15,10 +15,13 @@ function SandboxUI(config){
 	var playButton = new Button({
 		x:172, y:215, text_id:"label_start", size:"short",
 		onclick: function(){
-			if(slideshow.objects.tournament.isAutoPlaying){
-				publish("tournament/autoplay/stop");
-			}else{
-				publish("tournament/autoplay/start");
+			var flag=0;
+			if(flag===1) {
+				if (slideshow.objects.tournament.isAutoPlaying) {
+					publish("tournament/autoplay/stop");
+				} else {
+					publish("tournament/autoplay/start");
+				}
 			}
 		}
 	});
@@ -165,10 +168,10 @@ function SandboxUI(config){
 	var yDiff = 80;
 	var yOff = 40;
 	_makePopulationControl(    0, yOff+0,       "tft",		tft_count);
-	_makePopulationControl(xDiff, yOff+0,       "all_d",	5);
-	_makePopulationControl(    0, yOff+yDiff,   "all_c",	5);
-	_makePopulationControl(xDiff, yOff+yDiff,   "grudge",	5);
-	_makePopulationControl(    0, yOff+yDiff*2, "prober",	5);
+	_makePopulationControl(xDiff, yOff+0,       "all_d",	all_d);
+	_makePopulationControl(    0, yOff+yDiff,   "all_c",	0);
+	_makePopulationControl(xDiff, yOff+yDiff,   "grudge",	0);
+	_makePopulationControl(    0, yOff+yDiff*2, "prober",	0);
 	_makePopulationControl(xDiff, yOff+yDiff*2, "tf2t",		0);
 	_makePopulationControl(    0, yOff+yDiff*3, "pavlov",	0);
 	_makePopulationControl(xDiff, yOff+yDiff*3, "random",	0);

@@ -47,3 +47,6 @@ def result(request):
 	
 def play_words(request):
 	return render(request,'game/words.html')
+
+def modal(request):
+	return render(request,'game/modal.html')
