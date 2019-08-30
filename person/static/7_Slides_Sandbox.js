@@ -21,7 +21,8 @@ SLIDES.push({
 			id:"button_next", type:"Button",
 			x:605, y:485, size:"long",
 			text_id:"sandbox_end_btn",
-			message: "slideshow/scratch"
+			oc:"parent.location='/result/'",
+			//message: "slideshow/scratch"
 		});
 		
 	},
