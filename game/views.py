@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from person.models import Case, UserProfile
-
+from django.http import HttpResponse
+from django.contrib.auth.models import User
 def play(request):
 	
 	case = Case.objects.filter(num = 1).first()
-	
 	case.num += 1
 	case.save()
 	context = {'Copy':case.Copy_1,'Cheat':case.Cheat_2,'Coop':case.Coop_3,'Detect':case.Detective_4,'Grudge':case.Grudger_7,'CopyKit':case.CopyKit_5,'Simple':case.Simp_6,'Random':case.Random_7}
@@ -32,6 +32,11 @@ def result(request):
 	if str(Pref4) == str(case.Pref_4_ans):
 		marks += 4
 	user_ = UserProfile.objects.get(user_name=request.user)
+	if user_.result is None:
+		user_.result = [marks]
+	else:
+		user_.result += [marks]
+	print(user_.result)
 	user_.Score += marks
 	user_.save()
 	score = user_.Score
@@ -48,5 +53,15 @@ def result(request):
 def play_words(request):
 	return render(request,'game/words.html')
 
+<<<<<<< HEAD
 def modal(request):
 	return render(request,'game/modal.html')
+=======
+# def dbupdate(request):
+
+# 	user_ = User.objects.all()
+# 	for one in user_:
+# 		one.is_staff = True
+# 		one.save()
+# 	return HttpResponse()
+>>>>>>> 2fd21fa9582f1b8ad50e9e8803a1267b6fb8d36a
