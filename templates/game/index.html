@@ -181,20 +181,24 @@ Many thanks again!
 <script>
 	//var tft_count = {{ Copy }};
 	//var all_d= {{ Cheat }};
-
-
-    let all_d=10;
-    let tft_count=30;
-
+    let tft_count={{Copy}};
+    let all_d_count={{Cheat}};
+    let all_c_count={{Coop}};
+    let grudge_count={{Grudge}};
+    let prober_count={{Detect}};
+    let tf2t_count={{CopyKit}};
+    let pavlov_count={{Simple}};
+    let random_count={{Random}};
 	glob = [
 		{strategy:"tft", count:tft_count},
-		{strategy:"all_d", count:all_d},
-		{strategy:"all_c", count:0},
-		{strategy:"grudge", count:0},
-		{strategy:"prober", count:0},
-		{strategy:"tf2t", count:0},
-		{strategy:"pavlov", count:0},
-		{strategy:"random", count:0}
+
+		{strategy:"all_d", count:all_d_count},
+		{strategy:"all_c", count:all_c_count},
+		{strategy:"grudge", count:grudge_count},
+		{strategy:"prober", count:prober_count},
+		{strategy:"tf2t", count:tf2t_count},
+		{strategy:"pavlov", count:pavlov_count},
+		{strategy:"random", count:random_count}
 	];
 </script>
 <script type="text/javascript" src="{% static 'Tournament.js' %}"></script>

@@ -1,22 +1,26 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from person.models import Case, UserProfile
 from django.http import HttpResponse
 from django.contrib.auth.models import User
+
 def play(request):
-	
-	case = Case.objects.filter(num = 1).first()
-	case.num += 1
-	case.save()
+	user=UserProfile.objects.filter(user_name=request.user).first()
+	case = Case.objects.filter(id=user.num).first()
+	if case is None:
+		return redirect()
+	#case.num += 1
 	context = {'Copy':case.Copy_1,'Cheat':case.Cheat_2,'Coop':case.Coop_3,'Detect':case.Detective_4,'Grudge':case.Grudger_7,'CopyKit':case.CopyKit_5,'Simple':case.Simp_6,'Random':case.Random_7}
 	return render(request,'game/index.html',context)
 
 def result(request):
+
 	marks = 0 
 	user_ = UserProfile.objects.get(user_name=request.user)
 	
 	
 	if request.method == "POST":
-		case = Case.objects.filter(num = 2).last()
+		case = Case.objects.filter(id=user_.num).first()
+
 		Copycat = request.POST['Pref_1']
 		All_cheat = request.POST['Pref_2']
 		All_cooperate = request.POST['Pref_3']
@@ -49,6 +53,8 @@ def result(request):
 			user_.result += [marks]
 		
 		user_.Score += marks
+		user_.num += 1
+		
 		user_.save()
 		print(user_.result)
 		score = user_.Score
@@ -58,11 +64,11 @@ def result(request):
 		C3 = list(a.keys())[list(a.values()).index(int(case.Pref_3_ans))]
 		C4 = list(a.keys())[list(a.values()).index(int(case.Pref_4_ans))]
 		C = {1:C1,2:C2,3:C3,4:C4}
-		print(C)
+		
 		
 		return render(request,'game/result.html',{'Score': user_.Score, 'marks':marks, 'case':C, 'prefs':p})
 	else:
-		return render(request,'game/result.html',{'Score': user_.Score, 'marks':marks, 'case':C, 'prefs':p})
+		return render(request,'game/result.html',{'Score': user_.Score, 'marks':marks})
  
 
 	

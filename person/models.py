@@ -10,8 +10,9 @@ class UserProfile(models.Model):
    user_name = models.OneToOneField(User, on_delete = models.CASCADE)
    Score = models.IntegerField(blank=True, default = 0)
    result=PickledObjectField(null=True)
+   num = models.IntegerField(blank = True, default = 1)
 class Case(models.Model):
-	num = models.IntegerField(blank = True, default = 1)
+	
 	Copy_1 = models.IntegerField(blank=True, default = 0)
 	Cheat_2 = models.IntegerField(blank=True, default = 0)
 	Coop_3 = models.IntegerField(blank=True, default = 0)
@@ -32,3 +33,4 @@ class Case(models.Model):
 	Pref_4_ans = models.IntegerField(blank=True, default = 0)
 	flag = models.IntegerField(blank=True,default = 0)
 	num_eliminate = models.IntegerField(blank=True, default = 0)
+

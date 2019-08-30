@@ -193,13 +193,13 @@ function SandboxUI(config){
 	var yDiff = 80;
 	var yOff = 40;
 	_makePopulationControl(    0, yOff+0,       "tft",		tft_count);
-	_makePopulationControl(xDiff, yOff+0,       "all_d",	all_d);
-	_makePopulationControl(    0, yOff+yDiff,   "all_c",	0);
-	_makePopulationControl(xDiff, yOff+yDiff,   "grudge",	0);
-	_makePopulationControl(    0, yOff+yDiff*2, "prober",	0);
-	_makePopulationControl(xDiff, yOff+yDiff*2, "tf2t",		0);
-	_makePopulationControl(    0, yOff+yDiff*3, "pavlov",	0);
-	_makePopulationControl(xDiff, yOff+yDiff*3, "random",	0);
+	_makePopulationControl(xDiff, yOff+0,       "all_d",	all_d_count);
+	_makePopulationControl(    0, yOff+yDiff,   "all_c",	all_c_count);
+	_makePopulationControl(xDiff, yOff+yDiff,   "grudge",	grudge_count);
+	_makePopulationControl(    0, yOff+yDiff*2, "prober",	prober_count);
+	_makePopulationControl(xDiff, yOff+yDiff*2, "tf2t",		tf2t_count);
+	_makePopulationControl(    0, yOff+yDiff*3, "pavlov",	pavlov_count);
+	_makePopulationControl(xDiff, yOff+yDiff*3, "random",	random_count);
 
 	// Adjust the WHOLE population...
 	/******************************
