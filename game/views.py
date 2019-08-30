@@ -60,9 +60,9 @@ def result(request):
 		C = {1:C1,2:C2,3:C3,4:C4}
 		print(C)
 		
-		return render(request,'game/result.html',{'Score': user_.Score, 'marks':marks, 'case':C, 'prefs':p})
+		return render(request,'game/result.html',{'Score': user_.Score, 'marks':marks, 'case':C})
 	else:
-		return render(request,'game/result.html',{'Score': user_.Score, 'marks':marks, 'case':C, 'prefs':p})
+		return render(request,'game/result.html',{'Score': user_.Score, 'marks':marks, 'case':C})
  
 
 	
