@@ -21,13 +21,14 @@ SLIDES.push({
 			x:605, y:485, size:"long",
 			text_id:"sandbox_end_btn",
 			message: "slideshow/scratch"
+//			onclick="location.href='http://google.com';"
 		});
 
-		self.add({
-			id:"bt01", type:"Button",
-			x:172, y:215, size:"long",
-			textContent:"Fuck_off"
-		});
+//		self.add({
+//			id:"bt01", type:"Button",
+//			x:172, y:215, size:"long",
+//			textContent:"Fuck_off"
+//		});
 		
 	},
 	onend: function(self){

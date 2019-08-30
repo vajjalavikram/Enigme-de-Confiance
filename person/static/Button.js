@@ -47,6 +47,7 @@ function Button(config){
 	button.setAttribute("data-target",config.targetc)
 	button.setAttribute("data-toggle",config.toggle)
 	button.setAttribute("id",config.ida)
+	button.setAttribute("onClick",config.oc)
 	self.setText = function(text_id){
 		var words = Words.get(text_id);
 		if(config.uppercase) words = words.toUpperCase();
