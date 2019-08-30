@@ -13,12 +13,7 @@ function SandboxUI(config){
 	/////////////////////////////////////////
 
 	
-		var playButton1 = new Button({
-
-				x:172, y:215, text_id:"label_start", size:"short", targetc:"#myModal",toggle:"modal", ida:"modal1",
-				
-		});
-		dom.appendChild(playButton1.dom);
+		
 	
 	/////////////////////////////////////////
 	// BUTTONS for playing //////////////////
@@ -55,7 +50,12 @@ function SandboxUI(config){
 	
 		
 	dom.appendChild(playButton.dom);
-	
+	var playButton1 = new Button({
+
+				x:172, y:215, text_id:"label_start", size:"short", targetc:"#myModal",toggle:"modal", ida:"modal1",
+				
+		});
+		dom.appendChild(playButton1.dom);
 	
 
 	/*var stepButton = new Button({

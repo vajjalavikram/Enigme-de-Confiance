@@ -12,48 +12,57 @@ def play(request):
 
 def result(request):
 	marks = 0 
-	case = Case.objects.filter(num = 2).last()
-	Copycat = request.POST.get('Pref_1')
-	All_cheat = request.POST.get('Pref_2')
-	All_cooperate = request.POST.get('Pref_3')
-	Detective = request.POST.get('Pref_4')
-	Grudger = request.POST.get('Pref_5')
-	Copykitten = request.POST.get('Pref_6')
-	Simpleton = request.POST.get('Pref_7')
-	Random = request.POST.get('Pref_8')
-	p = {'Copycat':Copycat,'All_cheat':All_cheat,'All_cooperate':All_cooperate,'Detective':Detective,'Grudger':Grudger,'CopyKitten':CopyKitten,'Simple':Simple,'Random':Random}
-	for i in range(len(p)):
-		if p[i]==None:
-			del p[i]
-
-
-	a = {'Copycat':1,'All_cheat':2,'All_cooperate':3,'Detective':4,'Grudger':5,'Copykitten':6,'Simpleton':7,'Random':8}
-	
-
-	if str(a(p.keys()[p.values().index(1)])) == str(case.Pref_1_ans):
-		marks += 4
-	if str(a(p.keys()[p.values().index(2)])) == str(case.Pref_2_ans):
-		marks += 4
-	if str(a(p.keys()[p.values().index(3)])) == str(case.Pref_3_ans):
-		marks += 4
-	if str(a(p.keys()[p.values().index(4)])) == str(case.Pref_4_ans):
-		marks += 2
 	user_ = UserProfile.objects.get(user_name=request.user)
-	if user_.result is None:
-		user_.result = [marks]
+	
+	
+	if request.method == "POST":
+		case = Case.objects.filter(num = 2).last()
+		Copycat = request.POST['Pref_1']
+		All_cheat = request.POST['Pref_2']
+		All_cooperate = request.POST['Pref_3']
+		Detective = request.POST['Pref_4']
+		Grudger = request.POST['Pref_5']
+		CopyKitten = request.POST['Pref_6']
+		Simple = request.POST['Pref_7']
+		Random = request.POST['Pref_8']
+
+		p = {'Copycat':Copycat,'All_cheat':All_cheat,'All_cooperate':All_cooperate,'Detective':Detective,'Grudger':Grudger,'CopyKitten':CopyKitten,'Simple':Simple,'Random':Random}
+		for i in p.keys():
+			if p[i]==0:
+				del p[i]
+
+		
+		a = {'Copycat':1,'All_cheat':2,'All_cooperate':3,'Detective':4,'Grudger':5,'CopyKitten':6,'Simple':7,'Random':8}
+		
+
+		if str(a[list(p.keys())[list(p.values()).index('1')]]) == str(case.Pref_1_ans):
+			marks += 4
+		if str(a[list(p.keys())[list(p.values()).index('2')]]) == str(case.Pref_2_ans):
+			marks += 4
+		if str(a[list(p.keys())[list(p.values()).index('3')]]) == str(case.Pref_3_ans):
+			marks += 4
+		if str(a[list(p.keys())[list(p.values()).index('4')]]) == str(case.Pref_4_ans):
+			marks += 2
+		if user_.result is None:
+			user_.result = [marks]
+		else:
+			user_.result += [marks]
+		
+		user_.Score += marks
+		user_.save()
+		print(user_.result)
+		score = user_.Score
+		
+		C1 = list(a.keys())[list(a.values()).index(int(case.Pref_1_ans))]
+		C2 = list(a.keys())[list(a.values()).index(int(case.Pref_2_ans))]
+		C3 = list(a.keys())[list(a.values()).index(int(case.Pref_3_ans))]
+		C4 = list(a.keys())[list(a.values()).index(int(case.Pref_4_ans))]
+		C = {1:C1,2:C2,3:C3,4:C4}
+		print(C)
+		
+		return render(request,'game/result.html',{'Score': user_.Score, 'marks':marks, 'case':C, 'prefs':p})
 	else:
-		user_.result += [marks]
-	print(user_.result)
-	user_.Score += marks
-	user_.save()
-	score = user_.Score
-	prefs = [P1,P2,P3,P4]
-	C1 = analog[str(case.Pref_1_ans)]
-	C2 = analog[str(case.Pref_2_ans)]
-	C3 = analog[str(case.Pref_3_ans)]
-	C4 = analog[str(case.Pref_4_ans)]
-	C = [C1,C2,C3,C4]
-	return render(request,'game/result.html',{'Score': score, 'marks':marks, 'case':C, 'prefs':prefs})
+		return render(request,'game/result.html',{'Score': user_.Score, 'marks':marks, 'case':C, 'prefs':p})
  
 
 	

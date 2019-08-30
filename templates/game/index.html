@@ -59,6 +59,8 @@ Many thanks again!
 	<link rel="stylesheet" href="{% static 'person/slides.css' %}">
 	<link rel="stylesheet" href="{% static 'person/balloon.css' %}">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 </head>
 <body>
 	<div id="preloader">loading...</div> <!-- TRANSLATE THIS -->
@@ -87,7 +89,7 @@ Many thanks again!
 		</div>
 
 	</div>
-<button type="button"  class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="z-index: 1000; position: fixed; top:215px;left:172px;" >Open Modal</button>
+
 
     <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -99,45 +101,47 @@ Many thanks again!
         <h4 class="modal-title">Select your choice</h4>
       </div>
       <div class="modal-body">
-        <form action = "#" method= "post">
+        
         	
         	{% if Copy %}
-   				Copycat <input type="number" name="Pref_1" min="1" max="4" value="0" id="1">
+   				Copycat <input type="number" name="Pref_1" min="1" max="4" value="0" id="p1">
    			{% endif %}
         	{% if Cheat %}
-   				Cheat <input type="number" name="Pref_2" min="1" max="4" value="0" id="2">
+   				Cheat <input type="number" name="Pref_2" min="1" max="4" value="0" id="p2">
    			{% endif %}
         	{% if Coop %}
-   				Coop <input type="number" name="Pref_3" min="1" max="4"value="0" id="3">
+   				Coop <input type="number" name="Pref_3" min="1" max="4"value="0" id="p3">
    			{% endif %}
         	{% if Detect %}
-   				Detect <input type="number" name="Pref_4" min="1" max="4"value="0"id="4">
+   				Detect <input type="number" name="Pref_4" min="1" max="4"value="0"id="p4">
    			{% endif %}
         	{% if Grudge %}
-   				Grudge <input type="number" name="Pref_5" min="1" max="4"value="0" id="5">
+   				Grudge <input type="number" name="Pref_5" min="1" max="4"value="0" id="p5">
    			{% endif %}
         	{% if CopyKit %}
-   				CopyKit <input type="number" name="Pref_6" min="1" max="4"value="0" id="6" >
+   				CopyKit <input type="number" name="Pref_6" min="1" max="4"value="0" id="p6" >
    			{% endif %}
         	{% if Simple %}
-   				Simple <input type="number" name="Pref_7" min="1" max="4"value="0" id="7">
+   				Simple <input type="number" name="Pref_7" min="1" max="4"value="0" id="p7">
    			{% endif %}
         	{% if Random %}
-   				Random <input type="number" name="Pref_8" min="1" max="4"value="0" id="8">
+   				Random <input type="number" name="Pref_8" min="1" max="4"value="0" id="p8">
    			{% endif %}
-   			<input type="Submit" name="Submit" id='submit'>
 
-        </form>
+
+   			
+
+       
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" id="formsub">Submit</button>
+        <button class="btn btn-default" id="formsub" onclick="modalf();">Submit</button>
       </div>
     </div>
 
   </div>
 </div>
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 </html>
@@ -219,23 +223,43 @@ Many thanks again!
 
 </script>
 
-<<<<<<< HEAD
+
 <script type="text/javascript">
-	$("#submit").click(function() {
-		$.ajax({
-			type: POST
-			url: "result/",
-			data:{'Pref_1':$("#1").val() ,'Pref_2':$("#2").val(),'Pref_3':$("#3").val(),'Pref_4':$("#4").val(),'Pref_5':$("#5").val(),'Pref_6':$("#6").val(),'Pref_7':$("#7").val(),'Pref_8':$("#8").val() ,csrfmiddlewaretoken:'{{ csrf_token }}'},
+	function modalf(){
+		console.log('hi');
+
+
+		jQuery.ajax({
+			type: "POST",
+			url: '{%url 'result'%}',
+			data:{
+					'Pref_1':(($("#p1")) ? ($("#p1").value) : "0"),
+					'Pref_2':(($("#p2")) ? ($("#p2").value) : "0"),
+					'Pref_3':(($("#p3")) ? ($("#p3").value) : "0"),
+					'Pref_4':(($("#p4")) ? ($("#p4").value) : "0"),
+					'Pref_5':(($("#p5")) ? ($("#p5").value) : "0"),
+					'Pref_6':(($("#p6")) ? ($("#p6").value) : "0"),
+					'Pref_7':(($("#p7")) ? ($("#p7").value) : "0"),
+					'Pref_8':(($("#p8")) ? ($("#p8").value) : "0"),
+					csrfmiddlewaretoken:'{{ csrf_token }}'},
 			success: function(resultData){
 				
-
+				document.getElementById("modal1").remove();
 			}
 		});
-	})
-=======
-<script>
-    
->>>>>>> a08e1b9fa8b80c8d832da84956da10214ee5ecf1
+	}
+
+	Element.prototype.remove = function() {
+    this.parentElement.removeChild(this);
+	}
+	NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
+	    for(var i = this.length - 1; i >= 0; i--) {
+	        if(this[i] && this[i].parentElement) {
+	            this[i].parentElement.removeChild(this[i]);
+	        }
+	    }
+	}
+
 </script>
 <!-- Main Code -->
 <script src="{% static 'main.js' %}"></script>
