@@ -1,10 +1,43 @@
 {%extends 'game/base.html'%}
 
 {% block content%}
-	<h1>Results</h1>
-	<h2>Your preferences were in the order {%for p in prefs%} {{p}}, {%endfor%} </h2>
-	<h2>The correct ans is {%for c in case%} {{c}}, {%endfor%}</h2>
-	<h2>So your score this round is {{marks}}</h2>
-	<h2>Final Score is {{Score}}</h2>
-	<a href="/play/">Click here for round 2</a>
+
+	<div class="row">
+		<div class="col-md-12" style="text-align: center;">
+			<h1>Results</h1>
+		</div>
+		<div class="col-md-12" style="text-align: center;">
+			<h3>Your Preferences were in the order:</h3>
+			<br>
+			<ul>
+				{% for p in prefs %}
+				<li> {{p}} </li>
+				{%endfor%}
+			</ul>
+		</div>
+		<div class="col-md-12" style="text-align: center;">
+			<h3>The Correct Ans is:</h3>
+			<br>
+			<ul>
+				{% for c in case %}
+				<li> {{c}} </li>
+				{%endfor%}
+			</ul>
+		</div>
+		<div class="col-md-12" style="text-align: center;">
+			<h3> Your Score for this round: {{marks}} </h3>
+		</div>
+		<div class="col-md-12" style="text-align: center;">
+			<h3> Final Score: {{Score}} </h3>
+		</div>
+		<div class="col-md-12" style="text-align: center;">
+			<h3> Case: {{hut}} </h3>
+		</div>
+		<div class="col-md-12" style="text-align: center;">
+            <a class="btn btn-info" href="/play/">Click Here for Next Round</a>
+		</div>
+
+	</div>
+
+
 {% endblock content%}

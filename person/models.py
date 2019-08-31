@@ -11,6 +11,9 @@ class UserProfile(models.Model):
    Score = models.IntegerField(blank=True, default = 0)
    result=PickledObjectField(null=True)
    num = models.IntegerField(blank = True, default = 1)
+   prefs = PickledObjectField(null=True)
+   
+
 class Case(models.Model):
 	
 	Copy_1 = models.IntegerField(blank=True, default = 0)
