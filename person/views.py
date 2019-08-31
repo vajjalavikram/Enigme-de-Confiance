@@ -4,7 +4,7 @@ from django.http import HttpResponse
 # Create your views here.
 def home(request):
 	if not request.user.is_authenticated:
-		return HttpResponse('<a href="/login">Login Here</a>')
+		return render(request, 'person/index.html')
 	else:
 		context = {
 			'UserProfile':UserProfile.objects.filter(user_name=request.user),
